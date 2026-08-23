@@ -1,185 +1,90 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react';
-import { Heart, Calendar, Images, ChevronDown } from 'lucide-react';
-import { IMAGES } from '@/data/content';
+import { useEffect, useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
+
+const SLIDES = [
+  {
+    id: 1,
+    url: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Bride and groom portrait with floral bouquet',
+    caption: 'Intimate Ceremonies',
+  },
+  {
+    id: 2,
+    url: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Luxury outdoor floral wedding reception',
+    caption: 'Bespoke Venues & Decor',
+  },
+  {
+    id: 3,
+    url: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Romantic couple sunset shoot',
+    caption: 'Unforgettable Memories',
+  },
+];
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const prefersReduced = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  });
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((previous) => (previous + 1) % SLIDES.length);
+    }, 4500);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <section
-      ref={ref}
-      id="home"
-      className="relative h-screen min-h-[640px] w-full overflow-hidden bg-cream-50"
-    >
-      {/* Background image with parallax */}
-      <motion.div
-        style={prefersReduced ? undefined : { y: imageY, scale: imageScale }}
-        className="absolute inset-0 z-0"
-      >
-        <motion.img
-          src={IMAGES.heroBride}
-          alt="Bride and groom embracing"
-          className="h-full w-full object-cover"
-          initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
-        />
-      </motion.div>
+    <section id="home" className="relative flex min-h-[90vh] items-center overflow-hidden bg-cream-50 text-ink-800">
+      <div className="pointer-events-none absolute -left-32 -top-32 h-[550px] w-[550px] rounded-full border border-gold-200" />
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-12 sm:px-8 lg:px-12 lg:py-16">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="space-y-6 lg:col-span-6 lg:pr-6">
+            <div className="flex items-center gap-3">
+              <span className="h-px w-10 bg-gold-500" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-ink-700/60">Est. 2014 &bull; Beverly Hills</span>
+            </div>
+            <p className="font-serif text-2xl italic tracking-wide text-blush-500 sm:text-3xl">For the wildly in love</p>
+            <h1 className="font-serif text-5xl font-normal leading-[1.08] tracking-tight text-ink-900 sm:text-6xl lg:text-7xl">
+              Your day, <br />
+              <span className="italic text-blush-500">beautifully</span> <br />
+              unforgettable.
+            </h1>
+            <p className="max-w-lg text-base font-light leading-relaxed text-ink-700/70 sm:text-lg">We turn the feeling of your love into a celebration with soul, style, and a hundred little details that feel unmistakably yours.</p>
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-7 py-4 text-xs font-medium uppercase tracking-wider text-white shadow-sm transition-all duration-300 hover:bg-ink-800 hover:shadow-md sm:text-sm">
+                Plan your wedding
+                <ArrowUpRight className="h-4 w-4 text-gold-400" />
+              </a>
+              <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-gold-300 bg-transparent px-6 py-4 text-xs font-medium uppercase tracking-wider text-ink-900 transition-all duration-300 hover:bg-gold-100 sm:text-sm">
+                Explore our work
+                <ArrowUpRight className="h-4 w-4 text-ink-700/60" />
+              </a>
+            </div>
+          </div>
 
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-cream-50/40 via-cream-50/20 to-cream-50/80" />
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-cream-50/70 via-transparent to-cream-50/30" />
-
-      {/* Decorative floral corners */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1, duration: 1, ease: 'easeOut' }}
-        className="absolute top-24 left-4 sm:left-8 z-20 hidden sm:block"
-      >
-        <div className="relative">
-          <div className="h-20 w-20 rounded-full border border-gold-300/40" />
-          <div className="absolute inset-2 rounded-full border border-blush-300/30" />
-          <Heart className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-5 w-5 text-gold-400 fill-gold-300/50" />
+          <div className="relative flex justify-center lg:col-span-6 lg:justify-end">
+            <div className="relative h-[520px] w-full max-w-md sm:h-[600px] sm:max-w-lg">
+              <div className="absolute -inset-4 -z-10 rounded-t-[220px] rounded-b-3xl bg-gradient-to-tr from-gold-100 to-transparent opacity-70" />
+              <span className="absolute -right-8 top-1/3 hidden origin-right rotate-90 text-[10px] uppercase tracking-[0.3em] text-ink-700/40 sm:block">Intentionally Planned &bull; Curated</span>
+              <div className="relative h-full w-full overflow-hidden rounded-t-[220px] rounded-b-3xl border-4 border-white shadow-2xl">
+                {SLIDES.map((slide, index) => (
+                  <div key={slide.id} className={`absolute inset-0 h-full w-full transform transition-all duration-1000 ease-in-out ${index === currentSlide ? 'translate-x-0 scale-100 opacity-100' : index < currentSlide ? '-translate-x-full scale-95 opacity-0' : 'translate-x-full scale-95 opacity-0'}`}>
+                    <img src={slide.url} alt={slide.alt} className="h-full w-full object-cover object-center" />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-6 text-left text-white">
+                      <span className="block text-[11px] font-medium uppercase tracking-widest text-white/80">{slide.caption}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="absolute -bottom-8 left-1/2 flex -translate-x-1/2 items-center gap-2">
+                {SLIDES.map((slide, index) => (
+                  <button key={slide.id} type="button" onClick={() => setCurrentSlide(index)} aria-label={`Go to slide ${index + 1}`} className={`h-2 rounded-full transition-all duration-300 ${currentSlide === index ? 'w-8 bg-blush-500' : 'w-2 bg-gold-300 hover:bg-gold-500'}`} />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1.2, duration: 1, ease: 'easeOut' }}
-        className="absolute bottom-32 right-4 sm:right-8 z-20 hidden sm:block"
-      >
-        <div className="relative">
-          <div className="h-16 w-16 rounded-full border border-gold-300/40" />
-          <div className="absolute inset-2 rounded-full border border-blush-300/30" />
-        </div>
-      </motion.div>
-
-      {/* Floating decorative dots */}
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute z-20 h-2 w-2 rounded-full bg-gold-300/40"
-          style={{
-            top: `${15 + i * 12}%`,
-            left: i % 2 === 0 ? `${5 + i * 3}%` : `${85 - i * 3}%`,
-          }}
-          animate={{
-            y: [0, -16, 0],
-            opacity: [0.3, 0.7, 0.3],
-          }}
-          transition={{
-            duration: 4 + i,
-            repeat: Infinity,
-            delay: i * 0.5,
-            ease: 'easeInOut',
-          }}
-        />
-      ))}
-
-      {/* Content */}
-      <motion.div
-        style={prefersReduced ? undefined : { y: textY }}
-        className="relative z-30 mx-auto flex h-full max-w-7xl flex-col items-center justify-center text-center px-5 sm:px-8 lg:px-12"
-      >
-        {/* Decorative top line */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="mb-5 flex items-center gap-4"
-        >
-          <span className="h-px w-12 bg-gold-400" />
-          <span className="font-script text-2xl text-gold-500">Élysée Weddings</span>
-          <span className="h-px w-12 bg-gold-400" />
-        </motion.div>
-
-        {/* Headline */}
-        <h1 className="font-serif font-600 text-ink-800 text-4xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] tracking-tight max-w-4xl">
-          {['Your Dream Wedding,', 'Beautifully Planned'].map((line, i) => (
-            <span key={line} className="block overflow-hidden">
-              <motion.span
-                initial={{ y: '100%' }}
-                animate={{ y: 0 }}
-                transition={{
-                  delay: 0.4 + i * 0.15,
-                  duration: 0.9,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="inline-block"
-              >
-                {line}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.7 }}
-          className="mt-6 max-w-xl text-lg text-ink-700/70 leading-relaxed"
-        >
-          From the first rose petal to the last dance — we craft timeless celebrations
-          that reflect your love story, down to every detail.
-        </motion.p>
-
-        {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1, duration: 0.7 }}
-          className="mt-9 flex flex-col sm:flex-row items-center gap-4"
-        >
-          <a
-            href="#contact"
-            className="group relative inline-flex items-center gap-2.5 bg-gradient-to-r from-blush-400 to-blush-500 text-white font-semibold px-8 py-4 rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_8px_32px_rgba(255,107,149,0.4)]"
-          >
-            <span className="absolute inset-0 bg-gradient-to-r from-blush-500 to-blush-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            <Calendar className="relative h-5 w-5" strokeWidth={1.8} />
-            <span className="relative">Plan Your Wedding</span>
-          </a>
-          <a
-            href="#featured"
-            className="group inline-flex items-center gap-2.5 border border-gold-400/50 text-ink-800 font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:border-gold-400 hover:bg-gold-100/50"
-          >
-            <Images className="h-5 w-5 text-gold-500 group-hover:scale-110 transition-transform" strokeWidth={1.8} />
-            View Our Weddings
-          </a>
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2"
-      >
-        <span className="font-sans text-[10px] tracking-[0.3em] text-ink-700/50 uppercase">
-          Scroll
-        </span>
-        <div className="relative h-10 w-px bg-blush-200 overflow-hidden">
-          <motion.div
-            animate={{ y: ['-100%', '100%'] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute inset-x-0 h-4 bg-gold-400"
-          />
-        </div>
-        <ChevronDown className="h-4 w-4 text-blush-400 animate-bounce" />
-      </motion.div>
+      </div>
     </section>
   );
 }

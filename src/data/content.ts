@@ -4,17 +4,17 @@ export const IMAGES = {
   heroAlt:
     'https://images.pexels.com/photos/30739866/pexels-photo-30739866.jpeg?auto=compress&cs=tinysrgb&w=1920',
   coupleElegant:
-    'https://images.pexels.com/photos/34767566/pexels-photo-34767566.jpeg?auto=compress&cs=tinysrgb&w=1280',
+    'https://images.pexels.com/photos/38080280/pexels-photo-38080280.jpeg',
   coupleEmbrace:
-    'https://images.pexels.com/photos/34489061/pexels-photo-34489061.jpeg?auto=compress&cs=tinysrgb&w=1280',
+    'https://images.pexels.com/photos/26990498/pexels-photo-26990498.jpeg',
   coupleRings:
     'https://images.pexels.com/photos/38603316/pexels-photo-38603316.jpeg?auto=compress&cs=tinysrgb&w=1280',
   coupleNight:
-    'https://images.pexels.com/photos/4493695/pexels-photo-4493695.jpeg?auto=compress&cs=tinysrgb&w=1280',
+    'https://images.pexels.com/photos/27876560/pexels-photo-27876560.jpeg',
   coupleHistoric:
     'https://images.pexels.com/photos/34206662/pexels-photo-34206662.png?auto=compress&cs=tinysrgb&w=1280',
   brideDress:
-    'https://images.pexels.com/photos/29545940/pexels-photo-29545940.jpeg?auto=compress&cs=tinysrgb&w=900',
+    'https://images.unsplash.com/photo-1544078751-58fee2d8a03b?auto=format&fit=crop&w=900&q=85',
   brideStaircase:
     'https://images.pexels.com/photos/13591986/pexels-photo-13591986.jpeg?auto=compress&cs=tinysrgb&w=900',
   brideWindow:
@@ -36,7 +36,7 @@ export const IMAGES = {
   floralPink:
     'https://images.pexels.com/photos/18573153/pexels-photo-18573153.jpeg?auto=compress&cs=tinysrgb&w=1280',
   bouquetPink:
-    'https://images.pexels.com/photos/30891127/pexels-photo-30891127.jpeg?auto=compress&cs=tinysrgb&w=1280',
+    'https://images.pexels.com/photos/22086472/pexels-photo-22086472.jpeg',
   bouquetRoses:
     'https://images.pexels.com/photos/289519/pexels-photo-289519.jpeg?auto=compress&cs=tinysrgb&w=1280',
   bouquetGarden:
@@ -57,6 +57,7 @@ export const IMAGES = {
     'https://images.pexels.com/photos/38658109/pexels-photo-38658109.jpeg?auto=compress&cs=tinysrgb&w=1280',
   receptionLavish:
     'https://images.pexels.com/photos/12303272/pexels-photo-12303272.jpeg?auto=compress&cs=tinysrgb&w=1280',
+    
 };
 
 export const CONTACT = {

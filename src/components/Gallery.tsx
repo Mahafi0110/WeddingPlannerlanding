@@ -12,6 +12,9 @@ const GALLERY_IMAGES = [
   { src: IMAGES.floralPink, alt: 'Floral arrangement', span: '' },
   { src: IMAGES.receptionCenterpiece, alt: 'Reception centerpiece', span: '' },
   { src: IMAGES.coupleHistoric, alt: 'Couple at historic venue', span: '' },
+  { src: IMAGES.bouquetGarden, alt: 'Garden bouquet', span: '' },
+  { src: IMAGES.receptionSunlit, alt: 'Sunlit reception', span: '' },
+  { src: IMAGES.brideWindow, alt: 'Bride by window', span: '' },
 ];
 
 export default function Gallery() {
