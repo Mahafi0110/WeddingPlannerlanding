@@ -31,7 +31,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col leading-none">
                 <span className="font-serif font-600 text-cream-50 text-xl tracking-tight">
-                  Élysée
+                  vetri
                 </span>
                 <span className="font-sans text-[10px] tracking-[0.3em] text-gold-300 uppercase">
                   Weddings
@@ -123,7 +123,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-cream-50/10">
           <p className="text-xs text-cream-50/40">
-            &copy; {new Date().getFullYear()} Élysée Weddings. Made with love.
+            &copy; {new Date().getFullYear()} vetri Weddings. Made with love.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-xs text-cream-50/40 hover:text-blush-300 transition-colors">

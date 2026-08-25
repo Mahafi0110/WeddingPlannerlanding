@@ -42,7 +42,7 @@ export default function Navbar() {
                 <span className="absolute inset-0 rounded-full border border-gold-300/50" />
               </div>
               <div className="flex flex-col leading-none">
-                <span className="font-serif font-600 text-ink-800 text-xl tracking-tight">Élysée</span>
+                <span className="font-serif font-600 text-ink-800 text-xl tracking-tight">vetri</span>
                 <span className="font-sans text-[10px] tracking-[0.3em] text-gold-500 uppercase">Weddings</span>
               </div>
             </a>
