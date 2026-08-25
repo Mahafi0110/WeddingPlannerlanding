@@ -4,6 +4,7 @@ import About from '@/components/About';
 import Services from '@/components/Services';
 import FeaturedWeddings from '@/components/FeaturedWeddings';
 import Gallery from '@/components/Gallery';
+import VideoStories from '@/components/VideoStories';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import Testimonials from '@/components/Testimonials';
 import CTA from '@/components/CTA';
@@ -20,6 +21,7 @@ function App() {
         <Services />
         <FeaturedWeddings />
         <Gallery />
+        <VideoStories />
         <WhyChooseUs />
         <Testimonials />
         <CTA />
